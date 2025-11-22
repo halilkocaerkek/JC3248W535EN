@@ -33,7 +33,7 @@ static const char *TAG = "DEMO_LVGL";
  * You also need to copy `lvgl/examples` to `lvgl/src/examples`. Similarly for the demos `lvgl/demos` to `lvgl/src/demos`.
  */
 #include <demos/lv_demos.h>
-// #include <examples/lv_examples.h>
+#include <examples/lv_examples.h>
 
 void setup();
 
@@ -115,7 +115,7 @@ void setup()
   lv_demo_widgets();
   //     lv_demo_benchmark();
   // lv_demo_music();
-  // lv_demo_stress();
+   //lv_demo_stress();
 
   /* Release the mutex */
   bsp_display_unlock();
