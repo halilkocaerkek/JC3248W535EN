@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where platformio:*)",
+      "Bash(nul)",
+      "Bash(where pio 2)",
+      "Bash(cmd /c create_project_scripts.bat weather_station)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

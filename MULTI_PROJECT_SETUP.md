@@ -180,18 +180,70 @@ build_flags =
 board_build.esp-idf.sdkconfig_path = projects/my_new_project/sdkconfig.defaults
 ```
 
-### Step 6: Build and Run
+### Step 6: Create Batch Files (Windows)
+
+Create convenience scripts for easy development:
+
+**projects/my_new_project/build.bat:**
+
+```bat
+@echo off
+set PROJECT_ROOT=%~dp0..\..
+cd /d "%PROJECT_ROOT%"
+powershell -Command "(Get-Content platformio.ini) -replace 'src_dir = projects/.*/src', 'src_dir = projects/my_new_project/src' | Set-Content platformio.ini"
+echo Building my_new_project...
+pio run
+```
+
+**projects/my_new_project/upload.bat:**
+
+```bat
+@echo off
+set PROJECT_ROOT=%~dp0..\..
+cd /d "%PROJECT_ROOT%"
+powershell -Command "(Get-Content platformio.ini) -replace 'src_dir = projects/.*/src', 'src_dir = projects/my_new_project/src' | Set-Content platformio.ini"
+echo Uploading my_new_project...
+pio run -t upload
+```
+
+**projects/my_new_project/monitor.bat:**
+
+```bat
+@echo off
+set PROJECT_ROOT=%~dp0..\..
+cd /d "%PROJECT_ROOT%"
+powershell -Command "(Get-Content platformio.ini) -replace 'src_dir = projects/.*/src', 'src_dir = projects/my_new_project/src' | Set-Content platformio.ini"
+pio device monitor
+```
+
+**projects/my_new_project/clean.bat:**
+
+```bat
+@echo off
+set PROJECT_ROOT=%~dp0..\..
+cd /d "%PROJECT_ROOT%"
+powershell -Command "(Get-Content platformio.ini) -replace 'src_dir = projects/.*/src', 'src_dir = projects/my_new_project/src' | Set-Content platformio.ini"
+pio run -t fullclean
+```
+
+### Step 7: Build and Run
+
+**Using batch files (Windows - Recommended):**
+
+```cmd
+cd projects\my_new_project
+build.bat       REM Build the project
+upload.bat      REM Upload to device
+monitor.bat     REM Monitor serial output
+```
+
+**Using PlatformIO directly:**
 
 ```bash
-# Build your new project
-pio run -e my_new_project
-
-# Upload and monitor
-pio run -e my_new_project -t upload
-pio device monitor -e my_new_project
-
-# Build all projects
+# Update src_dir in platformio.ini first, then:
 pio run
+pio run -t upload
+pio device monitor
 ```
 
 ---

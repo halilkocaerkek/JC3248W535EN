@@ -1,0 +1,27 @@
+{
+  "name": "ESP32-S3-Display-BSP",
+  "version": "1.0.0",
+  "description": "Board Support Package for JC3248W535EN ESP32-S3 Display with AXS15231B Controller",
+  "keywords": ["esp32s3", "display", "lvgl", "touch", "axs15231b", "qspi"],
+  "authors": [
+    {
+      "name": "JC3248W535EN Community"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NorthernMan54/JC3248W535EN"
+  },
+  "frameworks": "espidf",
+  "platforms": "espressif32",
+  "export": {
+    "include": [
+      "esp_bsp.h",
+      "esp_lcd_axs15231b.h",
+      "esp_lcd_touch.h",
+      "lv_port.h",
+      "display.h",
+      "bsp_err_check.h"
+    ]
+  }
+}
